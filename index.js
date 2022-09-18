@@ -75,7 +75,7 @@ app.get('/sync',(req,res)=>{
 
 app.get('/:page', (req, res)=> {
     let banners = {
-        blog: 'Our Blog',
+        blogs: 'Our Blog',
         cart: 'Shopping Cart',
         category: 'Shop Category',
         checkout: 'Product Checkout',

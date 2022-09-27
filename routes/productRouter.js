@@ -87,7 +87,7 @@ router.get('/:id',(req,res,next)=>{
         })
         .then(review =>{
             res.locals.userReview =review;
-            res.render('single-product');
+            res.render('single_product');
         })
         .catch(error =>next(error));
 });

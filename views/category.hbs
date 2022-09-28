@@ -126,11 +126,17 @@
       </div>
 			<div class="row mt-30">
         {{#each topProducts}}
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product d-flex">
-              {{>product}}
+        <div class="single-search-product-wrapper">
+            {{#each this}}
+            <div class="single-search-product d-flex">
+              <a href="#"><img src="{{imagepath}}" alt=""></a>
+              <div class="desc">
+                  <a href="#" class="title">{{name}}</a>
+                  <div class="price">${{price}}</div>
+              </div>
+            </div>
+            {{/each}}
           </div>
-        </div>
         {{/each}}
       </div>
 		</div>

@@ -43,7 +43,6 @@ app.use(session({
     saveUninitialized:false
 }));
 
-
 //Use Cart Controller
 let Cart = require('./controllers/cartController');
 app.use((req,res,next)=>{

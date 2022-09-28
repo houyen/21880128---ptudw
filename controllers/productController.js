@@ -54,14 +54,14 @@ controller.getAll = (query) => {
 
 controller.getById = (id) => {
     return new Promise((resolve, reject) => {
-        let product;
+        let Product;
         Product
             .findOne({
-                where: { id: id },
+                where: { productId: id },
                 include: [{ model: models.Category }],
             })
             .then(result => {
-                product = result;
+                Product = result;
                 return models.ProductSpecification.findAll({
                     where: { productId: id},
                     include: [{ model: models.Specification }]

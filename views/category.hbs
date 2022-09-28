@@ -1,5 +1,5 @@
 <script src="/vendors/nouislider/nouislider.min.js"></script>
-{{> banner}}
+{{>banner}}
 
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
@@ -96,9 +96,9 @@
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
             <div class="row">
-              {{#each Product}}
+              {{#each products}}
               <div class="col-md-6 col-lg-4">
-                {{> product}}
+                {{>product}}
               </div>
               {{/each}}
             </div>
@@ -127,16 +127,8 @@
 			<div class="row mt-30">
         {{#each topProducts}}
         <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            {{#each this}}
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="{{imagepath}}" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">{{name}}</a>
-                  <div class="price">${{price}}</div>
-              </div>
-            </div>
-            {{/each}}
+          <div class="single-search-product d-flex">
+              {{>product}}
           </div>
         </div>
         {{/each}}

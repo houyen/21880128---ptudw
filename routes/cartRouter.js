@@ -4,6 +4,7 @@ let router = express.Router();
 router.get('/',(req,res)=>{
     var cart = req.session.cart;
     res.locals.cart = cart.getCart();
+    res.locals.banner = "Shopping Cart";
     res.render('cart');
 });
 

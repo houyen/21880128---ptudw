@@ -62,7 +62,7 @@ app.use('/cart',require('./routes/cartRouter'));
 app.use('/comments',require('./routes/commentRouter'));
 app.use('/reviews',require('./routes/reviewRouter'));
 app.use('/users',require('./routes/userRouter'));
-
+app.use('/category', require('./routes/productRouter'));
 
 app.get('/sync',(req,res)=>{
     let models = require('./models');

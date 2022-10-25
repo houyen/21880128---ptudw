@@ -13,7 +13,6 @@ function  addToCart() {
             $('#cart-badge').html(result.totalQuantity);
         }
     });
-
   }
 
   function updateCart(id, quantity){
@@ -33,10 +32,10 @@ function  addToCart() {
             $('#totalPrice').html('$'+ result.totalPrice);
             if(result.totalPrice>0){
                 $(`#item${id}`).remove();
-            }else{
-                $('#cart-body').html('<div class="alert alert-info text-center">Your cart is empty!</div>');  
             }
-            
+            else{
+                $('#cart-body').html('<div class="alert alert-info text-center">Your cart is empty!</div>');  
+            }  
         }
     });
   }
@@ -65,5 +64,4 @@ function  addToCart() {
             }
         });
     }
-    
   }

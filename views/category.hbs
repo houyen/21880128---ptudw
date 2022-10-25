@@ -1,222 +1,226 @@
 <script src="/vendors/nouislider/nouislider.min.js"></script>
 {{>banner}}
 
-	<!-- ================ category section start ================= -->		  
-  <section class="section-margin--small mb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-5">
-          <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
-            <ul class="main-categories">
-              <li class="common-filter">
-                <form action="#">
-                  <ul>
-                    {{#each categories}}
-                    <li class="filter-list"><input class="pixel-radio"
-                      type="radio" id="category{{id}}" name="category"><label for="category{{id}}"
-                        onclick="selectParam('category',{{id}},true)">{{name}}
-                        <span> ({{Products.length}})</span></label></li>
-                    {{/each}}
-                  </ul>
-                </form>
-              </li>
-            </ul>
+<!-- ================ category section start ================= -->
+<section class="section-margin--small mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-5">
+        <div class="sidebar-categories">
+          <div class="head">Browse Categories</div>
+          <ul class="main-categories">
+            <li class="common-filter">
+              <form action="#">
+                <ul>
+                  {{#each categories}}
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="category{{id}}"
+                      name="category"><label for="category{{id}}" onclick="selectParam('category',{{id}},true)">{{name}}
+                      <span> ({{Products.length}})</span></label></li>
+                  {{/each}}
+                </ul>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-filter">
+          <div class="top-filter-head">Product Filters</div>
+          <div class="common-filter">
+            <div class="head">Brands</div>
+            <form action="#">
+              <ul>
+                {{#each brands}}
+                <li class="filter-list"><input class="pixel-radio" type="radio" id="brand{{id}}" name="brand"
+                    onclick="selectParam('brand',{{id}})"><label
+                    for="brand{{id}}">{{name}}<span>({{Products.length}})</span></label></li>
+                {{/each}}
+              </ul>
+            </form>
           </div>
-          <div class="sidebar-filter">
-            <div class="top-filter-head">Product Filters</div>
-            <div class="common-filter">
-              <div class="head">Brands</div>
-              <form action="#">
-                <ul>
-                  {{#each brands}}
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="brand{{id}}" name="brand"
-                    onclick="selectParam('brand',{{id}})"><label for="brand{{id}}">{{name}}<span>({{Products.length}})</span></label></li>
-                  {{/each}}
-                </ul>
-              </form>
-            </div>
-            <div class="common-filter">
-              <div class="head">Color</div>
-              <form action="#">
-                <ul>
-                  {{#each colors}}
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="color{{id}}" name="color"
-                    onclick="selectParam('color',{{id}})"><label for="color{{id}}">{{name}}<span>({{ProductColors.length}})</span></label></li>
-                  {{/each}}
-                </ul>
-              </form>
-            </div>
-            <div class="common-filter">
-              <div class="head">Price</div>
-              <div class="price-range-area">
-                <div id="price-range"></div>
-                <div class="value-wrapper d-flex">
-                  <div class="price">Price:</div>
-                  <span>$</span>
-                  <div id="lower-value"></div>
-                  <div class="to">to</div>
-                  <span>$</span>
-                  <div id="upper-value"></div>
-                </div>
+          <div class="common-filter">
+            <div class="head">Color</div>
+            <form action="#">
+              <ul>
+                {{#each colors}}
+                <li class="filter-list"><input class="pixel-radio" type="radio" id="color{{id}}" name="color"
+                    onclick="selectParam('color',{{id}})"><label
+                    for="color{{id}}">{{name}}<span>({{ProductColors.length}})</span></label></li>
+                {{/each}}
+              </ul>
+            </form>
+          </div>
+          <div class="common-filter">
+            <div class="head">Price</div>
+            <div class="price-range-area">
+              <div id="price-range"></div>
+              <div class="value-wrapper d-flex">
+                <div class="price">Price:</div>
+                <span>$</span>
+                <div id="lower-value"></div>
+                <div class="to">to</div>
+                <span>$</span>
+                <div id="upper-value"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-9 col-lg-8 col-md-7">
-          <!-- Start Filter Bar -->
-          <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting">
-              <select id="sort" onchange="selectParam('sort',this.value)">
-                <option value="name">Default sorting by name</option>
-                <option value="price">Sorting by price low to high</option>
-                <option value="overallReview">Sorting by reviews from high to low</option>
-              </select>
-            </div>
-            <div class="sorting mr-auto">
-              <select id="limit" onchange="selectParam('limit',this.value)">
-                <option value="9">Show 9</option>
-                <option value="18">Show 18</option>
-                <option value="36">Show 36</option>
-              </select>
-            </div>
-            <div>
-              <form action="/products" method="GET">
+      </div>
+      <div class="col-xl-9 col-lg-8 col-md-7">
+        <!-- Start Filter Bar -->
+        <div class="filter-bar d-flex flex-wrap align-items-center">
+          <div class="sorting">
+            <select id="sort" onchange="selectParam('sort',this.value)">
+              <option value="name">Default sorting by name</option>
+              <option value="price">Sorting by price low to high</option>
+              <option value="overallReview">Sorting by reviews from high to low</option>
+            </select>
+          </div>
+          <div class="sorting mr-auto">
+            <select id="limit" onchange="selectParam('limit',this.value)">
+              <option value="9">Show 9</option>
+              <option value="18">Show 18</option>
+              <option value="36">Show 36</option>
+            </select>
+          </div>
+          <div>
+            <form action="/products" method="GET">
               <div class="input-group filter-bar-search">
-                
+
                 <input type="text" name="search" placeholder="Search">
                 <div class="input-group-append">
                   <button type="submit"><i class="ti-search"></i></button>
-                </div>                
+                </div>
               </div>
-              </form>
-            </div>
+            </form>
           </div>
-          <!-- End Filter Bar -->
-          <!-- Start Best Seller -->
-          <section class="lattest-product-area pb-40 category-list">
-            <div class="row">
-              {{#each products}}
-              <div class="col-md-6 col-lg-4">
-                {{>product}}
-              </div>
-              {{/each}}
-            </div>
-            <div class="row justify-content-center">
-              <nav aria-label="Page navigation example" id="pagination">
-              {{{createPagination pagination paginationClass="pagination"}}}
-              </nav>
-            </div>
-            
-          </section>
-          <!-- End Best Seller -->
         </div>
-      </div>
-    </div>
-    
-  </section>
-	<!-- ================ category section end ================= -->		  
-
-	<!-- ================ top product area start ================= -->	
-  <section class="related-product-area">
-		<div class="container">
-			<div class="section-intro pb-60px">
-        <p>Popular Item in the market</p>
-        <h2>Top <span class="section-intro__style">Product</span></h2>
-      </div>
-			<div class="row mt-30">
-      {{#each topProducts}}
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            {{#each this}}
-            <div class="single-search-product d-flex">
-              <a href="/products/{{id}}"><img src="{{this.thumbnailPath}}" alt=""></a>
-              <div class="desc">
-                <a href="/products/{{id}}" class="title">{{this.name}}</a>
-                <div class="price">{{this.price}}</div>
-              </div>
+        <!-- End Filter Bar -->
+        <!-- Start Best Seller -->
+        <section class="lattest-product-area pb-40 category-list">
+          <div class="row">
+            {{#each products}}
+            <div class="col-md-6 col-lg-4">
+              {{>product}}
             </div>
             {{/each}}
           </div>
-        </div>
-        {{/each }}
-      </div>
-		</div>
-	</section>
-	<!-- ================ top product area end ================= -->		
+          <div class="row justify-content-center">
+            <nav aria-label="Page navigation example" id="pagination">
+              {{{createPagination pagination paginationClass="pagination"}}}
+            </nav>
+          </div>
 
-	<!-- ================ Subscribe section start ================= -->		  
-  <section class="subscribe-position">
-    <div class="container">
-      <div class="subscribe text-center">
-        <h3 class="subscribe__title">Get Update From Anywhere</h3>
-        <p>Bearing Void gathering light light his eavening unto dont afraid</p>
-        <div id="mc_embed_signup">
-          <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
-            <div class="form-group ml-sm-auto">
-              <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" >
-              <div class="info"></div>
-            </div>
-            <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
-            <div style="position: absolute; left: -5000px;">
-              <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-            </div>
-
-          </form>
-        </div>
-        
+        </section>
+        <!-- End Best Seller -->
       </div>
     </div>
-  </section>
-	<!-- ================ Subscribe section end ================= -->		  
+  </div>
+
+</section>
+<!-- ================ category section end ================= -->
+
+<!-- ================ top product area start ================= -->
+<section class="related-product-area">
+  <div class="container">
+    <div class="section-intro pb-60px">
+      <p>Popular Item in the market</p>
+      <h2>Top <span class="section-intro__style">Product</span></h2>
+    </div>
+    <div class="row mt-30">
+      {{#each topProducts}}
+      <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+        <div class="single-search-product-wrapper">
+          {{#each this}}
+          <div class="single-search-product d-flex">
+            <a href="/products/{{id}}"><img src="{{this.thumbnailPath}}" alt=""></a>
+            <div class="desc">
+              <a href="/products/{{id}}" class="title">{{this.name}}</a>
+              <div class="price">{{this.price}}</div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{/each }}
+    </div>
+  </div>
+</section>
+<!-- ================ top product area end ================= -->
+
+<!-- ================ Subscribe section start ================= -->
+<section class="subscribe-position">
+  <div class="container">
+    <div class="subscribe text-center">
+      <h3 class="subscribe__title">Get Update From Anywhere</h3>
+      <p>Bearing Void gathering light light his eavening unto dont afraid</p>
+      <div id="mc_embed_signup">
+        <form target="_blank"
+          action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+          method="get" class="subscribe-form form-inline mt-5 pt-1">
+          <div class="form-group ml-sm-auto">
+            <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email"
+              onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '">
+            <div class="info"></div>
+          </div>
+          <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
+          <div style="position: absolute; left: -5000px;">
+            <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ================ Subscribe section end ================= -->
 <script>
   let urlParams = new URLSearchParams(location.search);
-  let params ={
-    category:0,
-    brand:0,
-    color:0,
-    min:0,
-    max:100,
-    limit:9,
-    page:1,
-    sort:'name',
-    search:''
+  let params = {
+    category: 0,
+    brand: 0,
+    color: 0,
+    min: 0,
+    max: 100,
+    limit: 9,
+    page: 1,
+    sort: 'name',
+    search: ''
   };
-  for(let key in params){
-    if(!urlParams.has(key)){
-      urlParams.append(key,params[key]);
+  for (let key in params) {
+    if (!urlParams.has(key)) {
+      urlParams.append(key, params[key]);
     };
   }
-  
-  $(document).ready(()=>{
-    let checkboxes = ['category','brand','color'];
-    for(let key of checkboxes){
+
+  $(document).ready(() => {
+    let checkboxes = ['category', 'brand', 'color'];
+    for (let key of checkboxes) {
       let control = $(`#${key}${urlParams.get(key)}`);
-      if(control){
-        $(control).prop('checked',true);
+      if (control) {
+        $(control).prop('checked', true);
       }
     }
     $('#sort').val(urlParams.get('sort'));
     $('#limit').val(urlParams.get('limit'));
     $('#pagination li').addClass('page-item');
     $('#pagination li a').addClass('page-link');
-    let savePage =urlParams.get('page');
-    $('#pagination li a').each((index,item)=>{
+    let savePage = urlParams.get('page');
+    $('#pagination li a').each((index, item) => {
       let page = $(item).attr('href').split('=')[1];
-      urlParams.set('page',page);
-      let href ='/products?'+urlParams.toString();
-      $(item).attr('href',href);
+      urlParams.set('page', page);
+      let href = '/products?' + urlParams.toString();
+      $(item).attr('href', href);
     });
-    urlParams.set('page',savePage);
+    urlParams.set('page', savePage);
   });
-  function selectParam(key,value,reset = false){
-    if(reset){
-      for(let key in params){
-        urlParams.set(key,params[key]);
+  function selectParam(key, value, reset = false) {
+    if (reset) {
+      for (let key in params) {
+        urlParams.set(key, params[key]);
       }
     }
-    urlParams.set(key,value);
-    let url =`/products?${urlParams.toString()}`;
+    urlParams.set(key, value);
+    let url = `/products?${urlParams.toString()}`;
     location.href = url;
   }
 </script>

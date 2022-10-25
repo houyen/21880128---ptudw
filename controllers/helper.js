@@ -14,6 +14,7 @@ helper.createStarList =(stars)=>{
 </ul>`;
     return str;
 };
+
 helper.createStars = (star) =>{
     let str ='';
     let i;

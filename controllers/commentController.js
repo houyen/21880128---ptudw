@@ -12,6 +12,4 @@ controller.add = (comment) =>{
             .catch(error =>reject(new Error(error)));
     });
 };
-
-
 module.exports = controller;

@@ -77,10 +77,6 @@ router.get("/:id", (req, res, next) => {
         req.session.user ? req.session.user.id : 0,
         req.params.id );
     })
-    .then((topProducts) =>{
-      res.locals.topProducts = topProducts;
-      return productController.getTopProducts();
-    })
     .then((review) => {
       res.locals.userReview = review;
       res.locals.banner = "Shop Single";
@@ -88,7 +84,5 @@ router.get("/:id", (req, res, next) => {
     })
     .catch((error) => next(error));
 });
-
-
 
 module.exports = router;

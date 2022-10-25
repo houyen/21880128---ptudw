@@ -140,9 +140,8 @@ controller.getTopProducts =() =>{
         Product
             .findAll({
                 limit :12,
-                order:[
-                    ['overallReview','DESC']
-                ]
+                order:[['overallReview','DESC']],
+                attributes:['id', 'name', 'thumbnailPath', 'price', 'categoryId' ]
             })
             .then(
                 data=>{

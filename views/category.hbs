@@ -125,21 +125,21 @@
         <h2>Top <span class="section-intro__style">Product</span></h2>
       </div>
 			<div class="row mt-30">
-        {{#each topProducts}}
+      {{#each topProducts}}
         <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
           <div class="single-search-product-wrapper">
             {{#each this}}
             <div class="single-search-product d-flex">
-              <a href="#"><img src="{{imagepath}}" alt=""></a>
+              <a href="/products/{{id}}"><img src="{{this.thumbnailPath}}" alt=""></a>
               <div class="desc">
-                  <a href="#" class="title">{{name}}</a>
-                  <div class="price">${{price}}</div>
+                <a href="/products/{{id}}" class="title">{{this.name}}</a>
+                <div class="price">{{this.price}}</div>
               </div>
             </div>
             {{/each}}
           </div>
         </div>
-        {{/each}}
+        {{/each }}
       </div>
 		</div>
 	</section>

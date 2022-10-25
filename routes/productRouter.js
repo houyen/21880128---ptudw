@@ -55,8 +55,13 @@ router.get("/", (req, res, next) => {
         limit: parseInt(req.query.limit),
         totalRows: data.count,
       };
-      res.locals.banner = "Products";
-      res.render("category");
+      let productController = require('../controllers/productController');
+      return productController.getTopProducts();
+    })
+    .then(data =>{
+      res.locals.topProducts = data;
+      res.locals.banner = 'Shop Categories';
+      res.render('category');
     })
     .catch((error) => next(error));
 });
@@ -70,15 +75,22 @@ router.get("/:id", (req, res, next) => {
       let reviewController = require("../controllers/reviewController");
       return reviewController.getUserReviewProduct(
         req.session.user ? req.session.user.id : 0,
-        req.params.id
-      );
+        req.params.id );
     })
+    // .then((topProducts) =>{
+    //   res.locals.topProducts = topProducts;
+    //   let productController = require('../controllers/productController');
+    //   return productController.getTopProducts();
+
+    // })
     .then((review) => {
       res.locals.userReview = review;
       res.locals.banner = "Shop Single";
-      res.render("single-product");
+      res.render("single_product");
     })
     .catch((error) => next(error));
 });
+
+
 
 module.exports = router;
